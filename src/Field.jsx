@@ -1,16 +1,17 @@
-import { useState } from "react";
-
-const numberOfHoles = 9;
+import { useGame } from "./GameContext";
 
 export default function Field() {
-  const [isMole, setIsMole] = useState(false);
+  const { field } = useGame();
   return (
-    <>
-      <h1>Whack a Mole</h1>
-      <li
-        className={isMole ? "hole" : "mole"}
-        onClick={() => setIsMole(!isMole)}
-      ></li>
-    </>
+    <ul className="field">
+      {field.map((hasMole, i) => (
+        <Hole key={i} hasMole={hasMole} />
+      ))}
+    </ul>
   );
+}
+function Hole({ hasMole }) {
+  const { whack } = useGame();
+  if (hasMole) return <li onClick={whack} className="hole mole"></li>;
+  return <li className="hole"></li>;
 }
