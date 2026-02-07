@@ -1,4 +1,6 @@
-
+body {
+  background-color: skyblue;
+}
 .hole {
   background: url("/hole.png") no-repeat center/contain;
 }
@@ -6,4 +8,12 @@
 .mole {
   background-image: url("/mole.png");
 }
+h1 {
+  display: flex;
+  justify-content: center;
+}
 
+li {
+  height: 100px;
+  width: 100px;
+}
